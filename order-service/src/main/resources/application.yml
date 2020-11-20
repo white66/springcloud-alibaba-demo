@@ -1,0 +1,43 @@
+#server:
+#  port: 9001
+#
+#spring:
+#  zipkin:
+#    base-url: http://localhost:9411 #zipkin server的请求地址
+#    discovery-client-enabled: false #让nacos把它当成一个URL而不是服务名
+#    sender:
+#      type: web
+#  sleuth:
+#    sampler:
+#      probability: 1.0 #采样百分比
+#  application:
+#    name: order-service
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
+#    sentinel:
+#      transport:
+#        port: 9999
+#        dashboard: localhost:8080
+#      datasource:
+#        flow:
+#          nacos:
+#            server-addr: localhost:8848
+#            dataId: ${spring.application.name}
+#            groupId: DEFAULT_GROUP
+#            data-type: json
+#            rule-type: flow
+#  #数据源
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: abc123
+#    url: jdbc:mysql://localhost:3306/cloudalibaba?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+#mybatis:
+#  type-aliases-package: com.ly.entity
+#  mapper-locations: classpath:mapper/*Mapper.xml
+##开启feign对sentinel的支持
+#feign:
+#  sentinel:
+#    enabled: true

@@ -1,0 +1,6 @@
+# Project exclude paths
+/api-gateway/target/
+/order-service/target/
+/product-service/target/
+/springcloud-common/target/
+/user-provider/target/

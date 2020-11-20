@@ -1,0 +1,29 @@
+#server:
+#  port: 7000
+#spring:
+#  application:
+#    name: api-gateway
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true # 让gateway从nacos中获取服务信息
+#      routes: #路由数组
+#        - id: product-service #当前路由的标识，唯一，默认是UUID
+#          uri: lb://product-service #请求转发后的最终地址
+#          order: 1 #路由的优先级，数字越小的优先级越高
+#          predicates: #断言，条件判断
+#            - Path=/api/product/**
+#          filters: #过滤器，对请求的URI做处理
+#            - StripPrefix=0 # 0表示不对URI做处理，1表示在请求转发之前去掉第一层路径
+#  zipkin:
+#    base-url: http://localhost:9411 #zipkin server的请求地址
+#    discovery-client-enabled: false #让nacos把它当成一个URL而不是服务名
+#    sender:
+#      type: web
+#  sleuth:
+#    sampler:
+#      probability: 1.0 #采样百分比
